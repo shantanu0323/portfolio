@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Theme from "./models/Theme";
 import PageSection from "./models/PageSection";
-
+import Constants from "./properties/Constants";
 import NavBar from "./components/NavBar/NavBar";
 
 const App = () => {
@@ -20,7 +20,9 @@ const App = () => {
 
     return (
         <>
-            <div className="">
+            <div
+                className={`${Constants.BG_COLOR} font-robotoLight tracking-wide min-w-screen min-h-screen`}
+            >
                 <NavBar
                     theme={theme}
                     toggleTheme={toggleTheme}

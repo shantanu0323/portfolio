@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Kelvetica";
+    src: url("./assets/fonts/Kelvetica.ttf");
+}
+
+@font-face {
+    font-family: "RobotoThin";
+    src: url("./assets/fonts/Roboto/RobotoThin.ttf");
+}
+
+@font-face {
+    font-family: "RobotoLight";
+    src: url("./assets/fonts/Roboto/RobotoLight.ttf");
+}
+
+@font-face {
+    font-family: "RobotoRegular";
+    src: url("./assets/fonts/Roboto/RobotoRegular.ttf");
+}
+
+@font-face {
+    font-family: "RobotoMedium";
+    src: url("./assets/fonts/Roboto/RobotoMedium.ttf");
+}
+
+@font-face {
+    font-family: "RobotoBold";
+    src: url("./assets/fonts/Roboto/RobotoBold.ttf");
+}
