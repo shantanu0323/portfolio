@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import path from "path";
 
 async function fixPaths() {
     try {
@@ -26,6 +27,7 @@ async function fixPaths() {
         console.log("All paths fixed successfully!");
     } catch (err) {
         console.error("Error:", err);
+        throw err;
     }
 }
 
