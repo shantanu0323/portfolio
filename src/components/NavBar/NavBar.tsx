@@ -5,7 +5,7 @@ import { BsMoonStarsFill } from "react-icons/bs";
 import Theme from "../../models/Theme";
 import PageSection from "../../models/PageSection";
 import CommonUtils from "../../utils/CommonUtils";
-import Constants from "../../properties/Constants";
+import Colors from "../../properties/Colors";
 
 interface NavBarProps {
     theme: Theme;
@@ -20,7 +20,7 @@ const NavBar: React.FC<NavBarProps> = ({
     activePageSection,
     changeActivePageSection,
 }) => {
-    const handleClickThemeChange = (event: React.MouseEvent) => {
+    const handleClickThemeChange = (_: React.MouseEvent) => {
         toggleTheme();
     };
 
@@ -50,33 +50,37 @@ const NavBar: React.FC<NavBarProps> = ({
 
     return (
         <nav
-            className={`${Constants.TEXT_WHITE_COLOR} text-white flex justify-between p-4 `}
+            className={`absolute w-screen top-0 ${Colors.TEXT_WHITE_COLOR} text-white flex p-4 `}
         >
-            <div className="flex">
+            <div className="flex z-10 justify-between w-full">
                 {/* Home Button */}
-                <FaHome className="cursor-pointer text-2xl mr-4" />
+                <div className="flex left-nav-container">
+                    <FaHome
+                        className={`cursor-pointer text-2xl mr-4 hover:${Colors.TEXT_ACCENT_COLOR}`}
+                    />
 
-                {/* Page Section Buttons*/}
-                <ul className="flex mx-auto justify-end">
-                    {pageSectionList.map((pageSection) => {
-                        const classes =
-                            "cursor-pointer mr-4 duration-500 my-auto " +
-                            (pageSection === activePageSection
-                                ? "border-b-2 border-white"
-                                : "border-b-2 border-transparent text-md hover:border-slate-500");
+                    {/* Page Section Buttons*/}
+                    <ul className="flex mx-auto justify-end">
+                        {pageSectionList.map((pageSection) => {
+                            const classes =
+                                "cursor-pointer mr-4 duration-500 my-auto " +
+                                (pageSection === activePageSection
+                                    ? "border-b-2 border-white"
+                                    : "border-b-2 border-transparent text-md hover:border-slate-500");
 
-                        return (
-                            <li
-                                className={classes}
-                                onClick={handleSectionChange}
-                                key={pageSection}
-                                data-section={pageSection}
-                            >
-                                {CommonUtils.capitalize(pageSection)}
-                            </li>
-                        );
-                    })}
-                </ul>
+                            return (
+                                <li
+                                    className={classes}
+                                    onClick={handleSectionChange}
+                                    key={pageSection}
+                                    data-section={pageSection}
+                                >
+                                    {CommonUtils.capitalize(pageSection)}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
             </div>
 
             {/* Theme Button */}

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Theme from "./models/Theme";
 import PageSection from "./models/PageSection";
-import Constants from "./properties/Constants";
+import Colors from "./properties/Colors";
 import NavBar from "./components/NavBar/NavBar";
+import LandingPage from "./components/LandingPage/LandingPage";
 
 const App = () => {
     const [theme, setTheme] = useState<Theme>(Theme.LIGHT);
@@ -21,7 +22,7 @@ const App = () => {
     return (
         <>
             <div
-                className={`${Constants.BG_COLOR} font-robotoLight tracking-wide min-w-screen min-h-screen`}
+                className={`${Colors.BG_COLOR} font-robotoLight tracking-wide min-w-screen min-h-screen`}
             >
                 <NavBar
                     theme={theme}
@@ -29,7 +30,10 @@ const App = () => {
                     activePageSection={activePageSection}
                     changeActivePageSection={changeActivePageSection}
                 />
-                <h1>Rest of the Site is Under Development by Shantanu.</h1>
+                <LandingPage />
+                <div className="flex my-auto justify-center border-t-[1px] mt-4 py-2">
+                    <h1>Rest of the Site is Under Development by Shantanu.</h1>
+                </div>
             </div>
         </>
     );
