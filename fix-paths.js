@@ -18,10 +18,13 @@ async function fixPaths() {
         const assetFiles = await fs.readdir(assetsDir);
         for (const file of assetFiles) {
             const filePath = path.join(assetsDir, file);
-            const data = await fs.readFile(filePath, "utf8");
-            const updatedData = data.replace(/\/assets/g, "assets");
-            await fs.writeFile(filePath, updatedData, "utf8");
-            console.log(`Fixed paths in ${filePath}`);
+            const ext = path.extname(filePath).toLowerCase();
+            if (ext === ".js" || ext === ".css") {
+                const data = await fs.readFile(filePath, "utf8");
+                const updatedData = data.replace(/\/assets/g, "assets");
+                await fs.writeFile(filePath, updatedData, "utf8");
+                console.log(`Fixed paths in ${filePath}`);
+            }
         }
 
         console.log("All paths fixed successfully!");
