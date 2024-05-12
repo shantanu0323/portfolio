@@ -38,6 +38,12 @@ const NavBar: React.FC<NavBarProps> = ({
         );
     };
 
+    const navigateToActivePageSection = () => {
+        /** TODO: Implement the scrolling to the activePageSection using 'scrollTo() from the locomotive scroll:
+         * https://scroll.locomotive.ca/docs/#/methods?id=scrolltotarget-options
+         */
+    };
+
     const pageSectionList = CommonUtils.getPageSectionList();
 
     const handleSectionChange = (event: React.MouseEvent) => {
@@ -45,6 +51,7 @@ const NavBar: React.FC<NavBarProps> = ({
             .dataset.section as PageSection;
         if (selectedPageSection !== activePageSection) {
             changeActivePageSection(selectedPageSection as PageSection);
+            navigateToActivePageSection(activePageSection);
         }
     };
 

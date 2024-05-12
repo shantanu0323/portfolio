@@ -13,15 +13,23 @@ async function fixPaths() {
         await fs.writeFile(indexPath, updatedData, "utf8");
         console.log(`Fixed paths in ${indexPath}`);
 
+        // TODO: Remove the assets from the path entirely in the css file.
         const assetsDir = "dist/assets";
         console.log("Fixing the absolute paths in asset files...");
         const assetFiles = await fs.readdir(assetsDir);
         for (const file of assetFiles) {
             const filePath = path.join(assetsDir, file);
             const ext = path.extname(filePath).toLowerCase();
-            if (ext === ".js" || ext === ".css") {
+            if (ext === ".js") {
                 const data = await fs.readFile(filePath, "utf8");
                 const updatedData = data.replace(/\/assets/g, "assets");
+                await fs.writeFile(filePath, updatedData, "utf8");
+                console.log(`Fixed paths in ${filePath}`);
+            }
+
+            if (ext === ".css") {
+                const data = await fs.readFile(filePath, "utf8");
+                const updatedData = data.replace(/\/assets\//g, "");
                 await fs.writeFile(filePath, updatedData, "utf8");
                 console.log(`Fixed paths in ${filePath}`);
             }

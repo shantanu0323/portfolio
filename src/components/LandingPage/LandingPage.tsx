@@ -1,20 +1,32 @@
-import MainCharacter from "../../assets/images/main-character.png";
+import MainCharacter from "../../assets/images/blue-me.png";
 import { FaLaptopCode } from "react-icons/fa";
 import Colors from "../../properties/Colors";
 import { FaLocationDot } from "react-icons/fa6";
 
 const LandingPage = () => {
     return (
-        <section className="min-w-full min-h-fit text-white">
-            <div className="flex justify-center items-start space-0 top-0 w-full h-[115vh] items-">
-                <img
-                    src={MainCharacter}
-                    className="absolute bottom-[-15vh] w-[33vw] h-[100vh] object-fill"
-                />
-                <h1 className="absolute name-container bottom-0 text-6xl font-robotoBold tracking-widest scale-150 mb-10">
-                    SHANTANU PRAMANIK
-                </h1>
-                <div className="introduction-designation-container h-screen w-screen flex items-center">
+        <section className="min-w-full min-h-fit text-white overflow-hidden">
+            <div className="flex justify-center items-start space-0 top-0 w-full h-[115vh] relative">
+                {/* Absolute Containers */}
+                <>
+                    {/* Main-Character Image */}
+                    <img
+                        data-scroll
+                        data-scroll-speed="-0.5"
+                        src={MainCharacter}
+                        className="absolute z-0 bottom-0 h-[110vh] object-cover"
+                    />
+
+                    {/* Name-Container */}
+                    {/* TODO: Have a different bigger font for this */}
+                    <h1 className="absolute name-container bottom-[15vh]  text-[15vh] whitespace-nowrap font-robotoRegular tracking-wide scale-150 mb-10">
+                        - Shantanu Pramanik
+                    </h1>
+
+                    {/* First-Callout-Container */}
+                </>
+                <div className="introduction-designation-container h-screen w-screen flex items-center z-10">
+                    {/* Greeting Container to the left*/}
                     <div className="flex flex-col justify-center items-start pl-24 introduction-container w-[50vw] h-full">
                         <h1 className="greeting-container text-4xl font-robotoBold w-fit h-fit">
                             Hi There !!!
@@ -31,22 +43,24 @@ const LandingPage = () => {
                             how he can contribute to your team's success.
                         </p>
                     </div>
-                    <div className="flex flex-col justify-center items-end   designation-container w-[50vw] h-full">
-                        <div className="flex justify-end items-center designation-box h-32 pl-1 pr-6 rounded-l-full w-fit bg-gray-700">
+
+                    {/* Designation */}
+                    <div className="flex flex-col justify-center items-end   designation-container w-[50vw] h-full z-10">
+                        <div className="flex relative justify-end items-center designation-box h-28 pl-1 pr-6 rounded-l-full w-fit bg-gray-800">
                             <div
-                                className={`icon-container ml-4 mr-4 rounded-full w-24 h-24 flex justify-center items-center ${Colors.BG_ACCENT_COLOR}`}
+                                className={`icon-container mx-4 rounded-full w-20 h-20 flex justify-center items-center bg-gray-500`}
                             >
                                 <FaLaptopCode className="animate-pulse text-5xl" />
                             </div>
-                            <span className="designation text-2xl tracking-wider">
+                            <span className="designation text-2xl px-8 tracking-wider">
                                 Software
                                 <br />
                                 DEVELOPER
                             </span>
-                        </div>
-                        <div className="flex justify-center location-container pr-4 pt-2">
-                            <FaLocationDot className="h-6 mr-2" />
-                            <span>Bangalore, India</span>
+                            <div className="absolute bottom-0 left-1/2 translate-x-[-30%] translate-y-[130%] text-lg flex location-container">
+                                <FaLocationDot className="h-6 mr-2" />
+                                <span>Bangalore, India</span>
+                            </div>
                         </div>
                     </div>
                 </div>
