@@ -1,12 +1,26 @@
 import MainCharacter from "../../assets/images/blue-me.png";
 import { FaLaptopCode } from "react-icons/fa";
-import Colors from "../../properties/Colors";
 import { FaLocationDot } from "react-icons/fa6";
 
 const LandingPage = () => {
+    const handleScrollEvent = (event: any) => {
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        const percentChange = (scrollY / viewportHeight) * 100;
+        const nameDOM = document.querySelector(
+            ".section-landing-page .name-container #name-landing-page"
+        );
+        const xTransform = -1 * 0.25 * percentChange;
+        if (nameDOM != null) {
+            nameDOM.style.transform = `translateX(${xTransform}%)`;
+        }
+    };
+
+    window.addEventListener("scroll", handleScrollEvent);
+
     return (
-        <section className="min-w-full min-h-fit text-white overflow-hidden">
-            <div className="flex justify-center items-start space-0 top-0 w-full h-[115vh] relative">
+        <section className="min-w-full min-h-fit text-white overflow-hidden section-landing-page">
+            <div className="flex justify-center items-start space-0 top-0 w-full h-[115vh] relative bg-gradient-to-b from-zinc-500 to-zinc-900">
                 {/* Absolute Containers */}
                 <>
                     {/* Main-Character Image */}
@@ -14,18 +28,24 @@ const LandingPage = () => {
                         data-scroll
                         data-scroll-speed="-0.5"
                         src={MainCharacter}
-                        className="absolute z-0 bottom-0 h-[110vh] object-cover"
+                        className="absolute z-0 bottom-0 h-[110vh] object-cover saturate-0"
                     />
 
                     {/* Name-Container */}
                     {/* TODO: Have a different bigger font for this */}
-                    <h1 className="absolute name-container bottom-[15vh]  text-[15vh] whitespace-nowrap font-robotoRegular tracking-wide scale-150 mb-10">
-                        - Shantanu Pramanik
-                    </h1>
+                    <div className="absolute bottom-[15vh] w-screen h-fit name-container">
+                        <p
+                            className="text-[20vh] whitespace-nowrap py-0"
+                            id="name-landing-page"
+                        >
+                            - Shantanu{" "}
+                            <span className="font-robotoRegular">Pramanik</span>
+                        </p>
+                    </div>
 
                     {/* First-Callout-Container */}
                 </>
-                <div className="introduction-designation-container h-screen w-screen flex items-center z-10">
+                <div className="introduction-designation-container h-screen w-screen flex items-center">
                     {/* Greeting Container to the left*/}
                     <div className="flex flex-col justify-center items-start pl-24 introduction-container w-[50vw] h-full">
                         <h1 className="greeting-container text-4xl font-robotoBold w-fit h-fit">
@@ -46,11 +66,11 @@ const LandingPage = () => {
 
                     {/* Designation */}
                     <div className="flex flex-col justify-center items-end   designation-container w-[50vw] h-full z-10">
-                        <div className="flex relative justify-end items-center designation-box h-28 pl-1 pr-6 rounded-l-full w-fit bg-gray-800">
+                        <div className="flex relative justify-end items-center designation-box h-28 pl-1 pr-6 rounded-l-full w-fit bg-red-700">
                             <div
-                                className={`icon-container mx-4 rounded-full w-20 h-20 flex justify-center items-center bg-gray-500`}
+                                className={`icon-container mx-4 rounded-full w-20 h-20 flex justify-center items-center bg-red-200`}
                             >
-                                <FaLaptopCode className="animate-pulse text-5xl" />
+                                <FaLaptopCode className="animate-pulse text-5xl text-black" />
                             </div>
                             <span className="designation text-2xl px-8 tracking-wider">
                                 Software
