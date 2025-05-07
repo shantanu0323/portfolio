@@ -1,4 +1,4 @@
-import Image from "next/image";
+import BaseImage from "src/components/BaseImage";
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
@@ -17,7 +17,7 @@ export default function Home() {
       className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
     >
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
+        <BaseImage
           className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
@@ -44,7 +44,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
+            <BaseImage
               className="dark:invert"
               src="/vercel.svg"
               alt="Vercel logomark"
@@ -70,7 +70,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
+          <BaseImage
             aria-hidden
             src="/file.svg"
             alt="File icon"
@@ -85,7 +85,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
+          <BaseImage
             aria-hidden
             src="/window.svg"
             alt="Window icon"
@@ -100,7 +100,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
+          <BaseImage
             aria-hidden
             src="/globe.svg"
             alt="Globe icon"
